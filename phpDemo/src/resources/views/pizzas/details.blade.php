@@ -19,13 +19,13 @@
             </ul>
         @endif
         <br>
-        <form action="/pizzas/{{$pizza->id}}" method="POST">
+        <form action= {{ route('complete-order',['id'=>$pizza->id]) }} method="POST">
             @csrf
             @method('DELETE')
             <button class="btn btn-success">Complete Order</button>
         </form>
         <br>
-        <a class="btn btn-primary" href="/pizzas" class="back"><- Back to all pizzas</a>
+        <a class="btn btn-primary" href={{ route('list-pizzas') }} class="back"><- Back to all pizzas</a>
     </div>
 </div>
 @endsection

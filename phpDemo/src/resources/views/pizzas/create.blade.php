@@ -6,10 +6,14 @@
         <div class="title m-b-md">
                 Create a New Pizza
         </div>
-        <form class="form-inline" action="/pizzas" method="POST">
+        @if($errors->has('name'))
+                <strong style="color:red; font-size:2rem;" class="help">{{$errors->first('name')}}</strong>
+            @endif
+        <form class="form-inline" action={{ route('create-order-POST') }} method="POST">
         @csrf
             <label class="m-2" for="name">Your name:</label>
             <input class="m-2 form-control" type="text" id="name" name="name">
+      
             <label class="m-2" for="type">Choose pizza type:</label>
             <select class="m-2 form-control" name="type" id="type">
                 <option value="margarita">Margarita</option>

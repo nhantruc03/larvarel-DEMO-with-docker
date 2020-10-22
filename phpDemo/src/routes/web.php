@@ -10,17 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\PizzaController;
 
 Route::get('/', function(){
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/pizzas', 'App\Http\Controllers\PizzaController@index');
+Route::get('/pizzas', [PizzaController::class, 'index'])->name('list-pizzas');
 
-Route::get('/pizzas/{id}', 'App\Http\Controllers\PizzaController@show');
+Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->name('review-pizza');
 
-Route::get('/pizza/create', 'App\Http\Controllers\PizzaController@create');
+Route::get('/pizza/create', [PizzaController::class, 'create'])->name('create-order-GET');
 
-Route::post('/pizzas', 'App\Http\Controllers\PizzaController@store');
+Route::post('/pizzas', [PizzaController::class, 'store'])->name('create-order-POST');
 
-Route::delete('/pizzas/{id}', 'App\Http\Controllers\PizzaController@destroy');
+Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('complete-order');
+
+// {{ route('review-pizza',['id'=>$pizza.id]) }}

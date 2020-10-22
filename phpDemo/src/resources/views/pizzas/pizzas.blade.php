@@ -13,10 +13,10 @@
           <p style="font-size:x-large;">
            {{$i+1}} - {{ $pizza->name }} - {{ $pizza->type}} -{{$pizza->base}} 
            
-           <a class="btn btn-primary" style="margin-left: 30px;" href="/pizzas/{{$pizza->id}}">Preview</a>
+           <a class="btn btn-primary" style="margin-left: 30px;" href={{ route('review-pizza',['id'=>$pizza->id]) }}>Preview</a>
           </p>
         @endforeach
-        <a class="btn btn-success" href="/">Back to main page!</a>
+        <a class="btn btn-success" href={{ route('welcome') }}>Back to main page!</a>
     </div>
 </div>
 @endsection

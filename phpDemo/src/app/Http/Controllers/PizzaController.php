@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pizza;
+use App\Http\Requests\PizzasRequest;
 class PizzaController extends Controller
 {
     public function index() {
@@ -27,7 +28,7 @@ class PizzaController extends Controller
         return view('pizzas.create');
       }
 
-      public function store(){
+      public function store(PizzasRequest $request){
         $pizza = new Pizza();
         $pizza->name = request('name');
         $pizza->type = request('type');
@@ -36,7 +37,7 @@ class PizzaController extends Controller
         
         $pizza->save();
 
-        return redirect('/pizzas')->with('msg','Thanks for your order');
+        return redirect()->route('list-pizzas')->with('msg','Thanks for your order');
       }
 
       public function destroy($id){
