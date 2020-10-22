@@ -1,0 +1,9 @@
+docker-compose exec php php /var/www/html/artisan make:controller PizzaController
+
+docker-compose exec php php /var/www/html/artisan migrate:refresh
+
+docker-compose exec php php /var/www/html/artisan migrate
+
+docker-compose exec php php /var/www/html/artisan make:model Pizza
+
+docker-compose exec php php /var/www/html/artisan make:migration create_pizzas_table
